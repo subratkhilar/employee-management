@@ -1,18 +1,27 @@
 package com.ers.config.bean;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
 public class Employee {
-	private String empId;
+	@Id
+	@Column(name="Employee_ID")
+	private Long empId;
+	@Column(name="Employee_Name")
 	private String empName;
 	private int age;
+	@Column(name="BLOOD_GROUP")
 	private String bloodGroup;
 	private String address;
 	private String department;
 
-	public String getEmpId() {
+	public Long getEmpId() {
 		return empId;
 	}
 
-	public void setEmpId(String empId) {
+	public void setEmpId(Long empId) {
 		this.empId = empId;
 	}
 

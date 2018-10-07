@@ -1,7 +1,12 @@
-FROM java:8-jre
-MAINTAINER subrat khilar <subrat.khilar@gmail.com>
+FROM java:8
+FROM maven:alpine
+LABEL maintainer=“chathuranga.t@gmail.com”
+RUN mkdir -p /app/
 
-ADD ./target/eureka-discover-service.jar /app/
-CMD ["java", "-Xmx200m", "-jar", "/app/eureka-discover-service.jar"]
+COPY target/eureka-discover-service-1.0-SNAPSHOT.jar /app/eureka-discover-service-1.0-SNAPSHOT.jar
+
+WORKDIR /app
+ENTRYPOINT ["java","-jar","eureka-discover-service-1.0-SNAPSHOT.jar"]
+
 
 EXPOSE 8761

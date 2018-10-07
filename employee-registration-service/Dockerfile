@@ -1,7 +1,16 @@
-FROM java:8-jre
-MAINTAINER subrat khilar <subrat.khilar@gmail.com>
+FROM java:8
+FROM maven:alpine
+LABEL maintainer="subrat.khilar@gmail.com"
+RUN mkdir /app
 
-ADD ./target/employee-registration-service.jar /app/
-CMD ["java", "-Xmx200m", "-jar", "/app/employee-registration-service.jar"]
+
+
+
+
+COPY target/employee-registration-service-1.0-SNAPSHOT.jar /app/employee-registration-service-1.0-SNAPSHOT.jar
+
+WORKDIR /app
+
+ENTRYPOINT ["java","-jar","employee-registration-service-1.0-SNAPSHOT.jar"]
 
 EXPOSE 2222

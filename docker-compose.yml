@@ -1,0 +1,43 @@
+version: '3'
+
+services:
+  mysql-docker-container:
+    image: mysql:latest
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=spring_app_db
+      - MYSQL_USER=root
+      - MYSQL_PASSWORD=root
+    volumes:
+      - /data/mysql
+  eureka-discover-service:
+    image: eureka-discover-service-image
+    build:
+      context: ./eureka-discover-service
+      dockerfile: Dockerfile
+    ports:
+      - 8761:8761
+    volumes:
+      - /data/eureka-discover-service-app
+  employee-registration-service:
+    image: employee-registration-service-image
+    build:
+      context: ./employee-registration-service
+      dockerfile: Dockerfile
+    depends_on:
+      - eureka-discover-service
+    ports:
+      - 2222:2222
+    volumes:
+      - /data/employee-registration-service-app
+  employee-dashboard:
+    image: employee-dashboard-image
+    build:
+      context: ./employee-dashboard
+      dockerfile: Dockerfile
+    depends_on:
+      - eureka-discover-service
+    ports:
+      - 3333:3333
+    volumes:
+      - /data/employee-dashboard-app      

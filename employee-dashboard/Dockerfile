@@ -1,7 +1,14 @@
-FROM java:8-jre
-MAINTAINER subrat khilar <subrat.khilar@gmail.com>
+FROM java:8
+FROM maven:alpine
+RUN mkdir /app
 
-ADD ./target/employee-dashboard.jar /app/
-CMD ["java", "-Xmx200m", "-jar", "/app/employee-dashboard.jar"]
 
-EXPOSE 6000
+
+LABEL maintainer="subrat.khilar@gmail.com"
+COPY target/employee-dashboard-1.0-SNAPSHOT.jar /app/employee-dashboard-1.0-SNAPSHOT.jar
+WORKDIR /app
+
+ENTRYPOINT ["java","-jar","employee-dashboard-1.0-SNAPSHOT.jar"]
+
+
+EXPOSE 3333

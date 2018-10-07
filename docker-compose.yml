@@ -40,4 +40,15 @@ services:
     ports:
       - 3333:3333
     volumes:
-      - /data/employee-dashboard-app      
+      - /data/employee-dashboard-app 
+  employee-ui-service:
+    image: employee-ui-service-image
+    build:
+      context: ./employee-service-ui
+      dockerfile: Dockerfile
+    depends_on:
+      - eureka-discover-service
+    ports:
+      - 8888:8888
+    volumes:
+      - /data/employee-ui-service-app

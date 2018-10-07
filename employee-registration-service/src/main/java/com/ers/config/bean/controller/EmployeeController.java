@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -15,6 +16,7 @@ import com.ers.config.bean.Employee;
 import com.ers.config.bean.service.EmployeeService;
 
 @RestController
+@CrossOrigin(maxAge = 3600)
 public class EmployeeController {
 	@Autowired
 	private EmployeeService employeeService;
@@ -23,7 +25,7 @@ public class EmployeeController {
 	public ResponseEntity<String> aaddEmployeeDetails(@RequestBody Employee employee) {
 		try {
 			employeeService.addEmployeeDetails(employee);
-			return new ResponseEntity<String>("Employee record created sucessfully!!", HttpStatus.OK);
+			return new ResponseEntity<String>("Employee record created sucessfully!!", HttpStatus.CREATED);
 		} catch (Exception e) {
 			e.printStackTrace();
 			return new ResponseEntity<String>("Error in creating Employee record!!", HttpStatus.FAILED_DEPENDENCY);

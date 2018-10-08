@@ -7,10 +7,10 @@ RUN mkdir /app
 
 
 
-COPY target/employee-service-ui-0.0.1-SNAPSHOT.jar /app/employee-service-ui-0.0.1-SNAPSHOT.jar
+COPY target/employee-service-ui-0.0.1-SNAPSHOT.war /app/employee-service-ui-0.0.1-SNAPSHOT.war
 
 WORKDIR /app
 
-ENTRYPOINT ["java","-jar","employee-service-ui-0.0.1-SNAPSHOT.jar"]
+ENTRYPOINT ["java","-jar","employee-service-ui-0.0.1-SNAPSHOT.war"]
 
 EXPOSE 8888

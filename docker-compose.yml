@@ -52,3 +52,14 @@ services:
       - 8888:8888
     volumes:
       - /data/employee-ui-service-app
+  api-gateway-service:
+    image: api-gateway-service-image
+    build:
+      context: ./api-gateway
+      dockerfile: Dockerfile
+    depends_on:
+      - eureka-discover-service
+    ports:
+      - 8082:8082
+    volumes:
+      - /data/api-gateway-service-app

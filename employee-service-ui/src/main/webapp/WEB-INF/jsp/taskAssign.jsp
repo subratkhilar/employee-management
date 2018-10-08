@@ -19,7 +19,7 @@
 <!-- <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
 <script type="text/javascript">
-	var URL = "http://localhost:3333";
+	var URL = "http://localhost:8082/tasks-api";
 
 	$(document).ready(function() {
 		fetchTaskDetails();
@@ -70,9 +70,16 @@
 			data : JSON.stringify(regPrincipalMap),
 			type : "POST",
 
-			success : function() {
+			success : function(data) {
 				//console.log("SUCCESS: ", data);
 				//alert("SUCCESS: ");
+				var trHTML = '';
+				
+				trHTML = '<div class="alert alert-success"> <strong>Task  Sucessfully Assigned!</strong> </div>';
+				
+				//alert("SUCCESS: ");
+				//messageDiv
+				$('#messageDiv').append(trHTML);
 				fetchTaskDetails();
 				//display(data);
 			},
@@ -128,6 +135,8 @@
 					</tr>
 				</table>
 			</form>
+		</div>
+		<div id="messageDiv">
 		</div>
 		<div class="table-responsive">
 			<table class="table table-bordered table-hover "

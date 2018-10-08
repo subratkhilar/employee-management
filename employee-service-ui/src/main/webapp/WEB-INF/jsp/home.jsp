@@ -16,7 +16,7 @@
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script type="text/javascript">
-	var URL = "http://localhost:2222";
+	var URL = "http://localhost:8082/employees-api";
 
 	$(document).ready(function() {
 		callPrincipalDetails();
@@ -62,7 +62,7 @@
 		regPrincipalMap["bloodGroup"] = $("#bloodGroup").val();
 		regPrincipalMap["address"] = $("#address").val();
 		regPrincipalMap["department"] = $("#department").val();
-
+		$('#messageDiv').html('');
 		//alert(JSON.stringify(regPrincipalMap));
 		$.ajax({
 			headers : {
@@ -74,9 +74,14 @@
 			data : JSON.stringify(regPrincipalMap),
 			type : "POST",
 
-			success : function() {
-				//console.log("SUCCESS: ", data);
+			success : function(data) {
+				var trHTML = '';
+				
+				trHTML = '<div class="alert alert-success"> <strong>Employee record sucessfully created!</strong> </div>';
+				console.log("SUCCESS: ", data);
 				//alert("SUCCESS: ");
+				//messageDiv
+				$('#messageDiv').append(trHTML);
 				callPrincipalDetails();
 				//display(data);
 			},
@@ -86,13 +91,7 @@
 			}
 		});
 	}
-	function changeMenu(){
-		$("#taskAssignContainer").show();
-		$("#regdContainer").hide();
-	}
-	function submitTaskData(){
-		
-	}
+	
 </script>
 </head>
 <body>
@@ -149,44 +148,15 @@
 				</table>
 			</form>
 		</div>
+		<div id="messageDiv">
+		</div>
 		<div class="table-responsive">
 			<table class="table table-bordered table-hover "
 				style="margin-top: 10px" id="records_table">
 			</table>
 		</div>
 	</div>
-	<div class="container" id="taskAssignContainer" style="visibility: hidden">
-
-		<div class="starter-template">
-			<h1></h1>
-
-		</div>
-		<div class="table-responsive">
-			<h1>Task Assign</h1>
-			<form>
-				<table class="table">
-					<tr>
-						<td>Employee Id</td>
-						<td><input type="text" id="tempId"></td>
-					</tr>
-					<tr>
-						<td>Task Id</td>
-						<td><input type="text" id="taskId"></td>
-					</tr>
-					<tr>
-						<td>Task Description:</td>
-						<td><input type="text" id="description" name="description"></td>
-					</tr>
-					
-					<tr>
-						<td colspan="2" align="right"><input type="button"
-							onclick="submitTaskData();" value="ASSIGN" class="mc-btn btn-style-1"></td>
-					</tr>
-				</table>
-			</form>
-		</div>
-		
-	</div>
+	
 	<!-- /.container -->
 
 	<script type="text/javascript"

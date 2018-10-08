@@ -11,7 +11,7 @@
 
 	<artifactId>employee-service-ui</artifactId>
 
-	<packaging>jar</packaging>
+	<packaging>war</packaging>
 	<name>employee-service-ui Maven Webapp</name>
 	<url>http://maven.apache.org</url>
 	<dependencies>

@@ -37,6 +37,7 @@
 		<module>employee-registration-service</module>
 		<module>employee-dashboard</module>
     <module>employee-service-ui</module>
-  </modules>
+    <module>api-gateway</module>
+	</modules>
 	
 </project>

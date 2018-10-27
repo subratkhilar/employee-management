@@ -19,8 +19,8 @@
 <!-- <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
 <script type="text/javascript">
-	var URL = "http://localhost:8082/tasks-api";
-
+	//var URL = "http://localhost:8082/tasks-api";
+var URL = "http://localhost:3333";
 	$(document).ready(function() {
 		fetchTaskDetails();
 	});

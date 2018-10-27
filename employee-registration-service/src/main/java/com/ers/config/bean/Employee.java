@@ -1,18 +1,21 @@
 package com.ers.config.bean;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.Field;
 
-@Entity
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+@Document(collection = "EMPLOYEE")
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Employee {
 	@Id
-	@Column(name="Employee_ID")
+	@Field("Employee_ID")
 	private Long empId;
-	@Column(name="Employee_Name")
+	@Field("Employee_Name")
 	private String empName;
 	private int age;
-	@Column(name="BLOOD_GROUP")
+	@Field("BLOOD_GROUP")
 	private String bloodGroup;
 	private String address;
 	private String department;

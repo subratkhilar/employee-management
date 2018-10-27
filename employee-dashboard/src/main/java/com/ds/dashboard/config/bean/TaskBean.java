@@ -1,19 +1,21 @@
 package com.ds.dashboard.config.bean;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.Field;
 
-@Entity
-@Table(name="TASKS")
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+@Document(collection = "TASKS")
+@JsonIgnoreProperties(ignoreUnknown = true)
+
 public class TaskBean {
 	@Id
-	@Column(name = "TASK_ID")
+	@Field("TASK_ID")
 	private Long taskId;
-	@Column(name = "TASK_DESCRIPTION")
+	@Field("TASK_DESCRIPTION")
 	private String taskDescription;
-	@Column(name = "EMPLOYEE_ID")
+	@Field("EMPLOYEE_ID")
 	private Long empId;
 
 	public Long getTaskId() {

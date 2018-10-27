@@ -1,15 +1,15 @@
 version: '3'
 
 services:
-  mysql-docker-container:
-    image: mysql:latest
+  mongodb:
+    image: mongo:latest
+    ports:
+      - "27017:27017"
     environment:
-      - MYSQL_ROOT_PASSWORD=root
-      - MYSQL_DATABASE=spring_app_db
-      - MYSQL_USER=root
-      - MYSQL_PASSWORD=root
+      - MONGO_DATA_DIR=/data/db
+      - MONGO_LOG_DIR=/dev/null
     volumes:
-      - /data/mysql
+      - /data/mongodb
   eureka-discover-service:
     image: eureka-discover-service-image
     build:

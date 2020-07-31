@@ -16,8 +16,8 @@
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script type="text/javascript">
-	var URL = "http://localhost:8082/employees-api";
-
+	/* var URL = "http://localhost:8082/employees-api"; */
+var URL = "http://localhost:2222";
 	$(document).ready(function() {
 		callPrincipalDetails();
 	});

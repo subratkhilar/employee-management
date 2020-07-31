@@ -26,7 +26,7 @@ public class TaskServiceImpl implements TaskService {
 	}
 
 	public List<TaskBean> listOfTasks() {
-		return taskRepository.findAll();
+		return (List<TaskBean>) taskRepository.findAll();
 	}
 
 }
